@@ -39,7 +39,8 @@ import (
 
 			ロードモジュールさえできればいいということでしたらコマンド一つでできます。
 
-以下にビルドし、Webサーバーとして起動する例を示します。
+以下にビルドし、Webサーバーとして起動する例を示します。CGIとして使う場合はできあがったロードモジュールを
+ディレクトリごと（Webサーバーの設定に応じて）所定のディレクトリーに配置してください。
 
 【Unix/Linux】
 
@@ -103,25 +104,22 @@ import (
 	        └─templates
 
 	C:\Users\chouette\go\src\t999srapi>xcopy /e v0.1.0\t999srapi-0.1.0\*.*
-	v0.1.0\t999srapi-0.1.0\freebsd.bat
-	v0.1.0\t999srapi-0.1.0\freebsd.sh
 	v0.1.0\t999srapi-0.1.0\LICENSE
 	v0.1.0\t999srapi-0.1.0\README.md
 	v0.1.0\t999srapi-0.1.0\t999srapi.go
 	v0.1.0\t999srapi-0.1.0\public\index.html
-	v0.1.0\t999srapi-0.1.0\templates\top.gtpl
+	v0.1.0\t999srapi-0.1.0\templates\apieventroomlist.gtpl
 	以下省略（リリースによって内容が異なる場合があります。）
 
 	C:\Users\chouette\go\src\t999srapi>rmdir /s /q v0.1.0
-	以下省略（リリースによって内容が異なる場合があります。）
 
 	C:\Users\chouette\go\src\t999srapi>del v0.1.0.zip
 
 	ここで次のような構成になっていればOKです。top.gtpl と index.html が所定の場所にあることをかならず確かめてください。
 
-	C:%HOMEPATH%\go\src\t999srapi --+-- t999srapi.go
+	C:%HOMEPATH%\go\src\t999srapi --+-- t999srapi.go 他設定ファイル、シェルスクリプト等
 	                                |
-	                                +-- \templates --- t999top.gtpl
+	                                +-- \templates --- apieventroomlist.gtpl 他.gtplファイル
 	                                |
 	                                +-- \public    --- index.html
 

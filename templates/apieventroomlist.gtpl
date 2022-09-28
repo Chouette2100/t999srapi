@@ -125,10 +125,13 @@
             <td>ルーム名（ルーム状況へのリンク）</td>
             <td>獲得ポイント</td>
             <td>上位との差</td>
-            <td>Prof. / Live / FC</td>
+            <td>Prof. / Live / FC / Cnt.</td>
             <td>配信中？</td>
             <td>次回配信時刻</td>
         </tr>
+
+        {{ $e := .Eventurl }}
+
         {{ with .Roomlistinf }}
         {{ range .RoomList }}
         <tr>
@@ -145,7 +148,7 @@
                 {{ end }}
             </td>
             <td style="text-align: right;">
-                {{ if ne .Gap -1 }}
+                {{ if ne .Rank 1 }}
                 {{ Comma .Gap }}
                 {{ end }}
             </td>
@@ -154,7 +157,9 @@
                 <a href="https://www.showroom-live.com/{{ .Room_url_key }}" target="_blank"
                     rel="noopener noreferrer">Live</a> /
                 <a href="https://www.showroom-live.com/room/fan_club?room_id={{ .Room_id }}" target="_blank"
-                    rel="noopener noreferrer">FC</a>
+                    rel="noopener noreferrer">FC</a> /
+                <a href="https://www.showroom-live.com/event/contribution/{{ $e }}?room_id={{ .Room_id }}" target="_blank"
+                    rel="noopener noreferrer">Cnt.</a>
             </td>
             <td style="text-align: center;">
                 {{ if eq .Islive true}}

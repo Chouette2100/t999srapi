@@ -18,7 +18,8 @@
 </head>
 
 <body>
-    <p>
+    <p>ルーム状況（ /api/room/status?roomid=..... ）</p>
+    <p style="padding: 2em;">
         {{ range .Roomstatus }}
         {{ . }}<br>
         {{ end }}
